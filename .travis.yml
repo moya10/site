@@ -11,6 +11,7 @@ before_install:
   - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
   
 script:
+  - chmod +x makefile.sh
   - "./makefile.sh"
   - pandoc --from=markdown --template _layouts/intro.latex -o text/intro.pdf --pdf-engine=xelatex
     titlepage.md
