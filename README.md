@@ -3,7 +3,7 @@
 
 ## Παραδοτέα
 * [Τεκμηρίωση για το θέμα](https://mmistakes.github.io/minimal-mistakes/)
-* ![Ολοκληρωση μεσω Travis-CI](https://api.travis-ci.com/moya10/site.svg?branch=gh-pages)
+* [![Build Status](https://travis-ci.com/moya10/site.svg?branch=gh-pages)](https://travis-ci.com/moya10/site)
     
     - `deploy function doesnt work yet`
 * [Το link της σελιδας](https://upatras-hci.netlify.app)
