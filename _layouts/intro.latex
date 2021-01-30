@@ -48,10 +48,10 @@
 \clearpage
 \section{Courses}
 \clearpage
-\includepdf[pages=-]{./_layouts/courses.pdf}
+\includepdf[pages=-]{courses.pdf}
 \section{People}
 \clearpage
-\includepdf[pages=-]{./_layouts/people.pdf}
+\includepdf[pages=-]{people.pdf}
 \section{References}
 \clearpage
 \begin{flushleft}
