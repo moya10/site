@@ -1,0 +1,37 @@
+<!-- CSS and Fonts -->
+<link title="timeline-styles" rel="stylesheet" href="//cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+<link title="timeline-styles" rel="stylesheet" href="//cdn.knightlab.com/libs/timeline3/latest/css/fonts/font.opensans-gentiumbook.css">
+
+<h2 class="archive__subtitle">History of Interactive Computing</h2></br>
+
+<!--NOT USED-->
+{% capture posts %}
+    {"events":  [{% for post in site.posts %} { "start_date": {"year" : "{{ post.date | date: "%Y" }}"},  "text": {"text"  : "{{ post.caption }}","headline" : "{{ post.title }}" },"media" : {"url" : "{{ post.link }}"} } {% if forloop.last %}{% else %},{% endif %} {% endfor %} ]}
+{% endcapture %}
+{% assign timeline_json = posts  | strip_newlines %}
+<!--END-->
+
+{% assign timedata = site.data.timeline | jsonify %}
+{% assign timeline = timedata  | strip_newlines %}
+<!-- Timeline.js from the KnightLab CDN -->
+<script src="//cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+
+<div id='timeline-embed' style="width: 100%; height: 600px;"></div>
+
+<script type="text/javascript">
+  var options = {
+    is_embed: true,
+    is_full_embed: true,
+    initial_zoom: 1
+  }
+  timeline = new TL.Timeline('timeline-embed', {{timeline}}, options);
+</script>
+</br><p>This timeline contains a handpicked collection of seminal interactive computers and ideas from the 1960s to the 1990s. 
+
+  The timeline includes systems such as mainframes and minis, micros, desktops, tablets, smart phones, mixed reality, intelligent agents. 
+  
+  These classic systems introduced interaction styles, such as pen, mouse, touch, gesture, graphics, multimedia.
+  
+  The main goal of this timeline is to demonstrate the cultural breadth of the beginnings of interactive computing.</p>
+  <span>You can also check it on <a href="https://www.youtube.com/channel/UCXRT71xdiJVlbgMpeMvUZ3g/playlists">Youtube</a></span><br>
+  <span><small>Note: The year in some videos is just rough edited..</small></span>

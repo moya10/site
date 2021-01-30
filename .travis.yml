@@ -1,0 +1,22 @@
+sudo: required
+language: ruby
+rvm: 2.6.2
+dist: trusty
+cache: bundler
+before_install:
+  - wget https://github.com/jgm/pandoc/releases/download/2.11.2/pandoc-2.11.2-1-amd64.deb
+  - sudo dpkg -i pandoc-2.11.2-1-amd64.deb
+  - rm pandoc-2.11.2-1-amd64.deb
+  - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
+script:
+  - "./makefile.sh"
+  - pandoc --from=markdown --template _layouts/intro.latex -o text/intro.pdf --pdf-engine=xelatex
+    titlepage.md
+after_success:
+  - "./push.sh"
+branches:
+  only:
+  - gh-pages
+env:
+  global:
+    secure: Kbd4Ktx+Ppdw/ocw3r94I4vKbZdxjVZhsSBLu9hvAq0CQxada3s1HLcuOCUXR1TCpIixkXExT1D1y/qRxnjZYRQ1OIfulBSZzyZuFCH7AwcpsjDdk1IYNJq/M1oPdp05H6McbgIuhJ9N55M2HnhlnWqWH9uFAW1m9g+G94Pp+jjOVuvxbnZzqJ9g+as9LkQrcYLIdJeqPn8sbnfUAauTYzPZHdyvLEwGwlFF4kRPPFddPvdaqe57Q9/hsLK3lyGJDl+is81IvTPqRxJSvuIUvXlEdi0kTPK7SesVkWpUM4E1hSqUPXwRa6pirBDc9yqDI6dR+TcXLA2G2jY6qD/Ascu+nB1lqU/Ebu7x+bHIowUAJgL3hO/MC1vukI0WdvOWBiZzsrr8kj7MzthU73C5uryl8JaCM+QAMoSZeg2a5auGcpkYCd8ju4tdn48BFfy+mumk9tqTCMmOfkb3rob7J7BOAgDBuPgyvFXnbbKZ4RUUXglBROMJr20xduxZzKgXG5bZswYOKTiv1ekmyYQ59zag2mUbHPLraeBct5CWFhv3xFcpEJ+O3EuOiMg6QhX8GnpPCSNBnfjc0x9/98+qPsttuk6c3nIrpI3wFTkrWv6uD0PL9XhlVV6Zph+czajXBuuZD8L0Nq1D9h9KeJDBisC8wR6e2pFGM6tr6RavDTY=

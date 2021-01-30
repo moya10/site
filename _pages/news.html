@@ -1,0 +1,20 @@
+---
+ref: news
+title: "News"
+layout: single
+---
+
+{% assign entries_layout = site.news %} 
+{% assign postsByYear = entries_layout | where_exp: "item", "item.hidden != true" | group_by_exp: 'year', 'year.date | date: "%Y"'  %}
+
+{% assign news = postsByYear | reverse  %}
+{% for year in news %}
+  <section id="{{ year.name }}" class="taxonomy__section">
+    <h2 class="archive__subtitle">{{ year.name }}</h2>
+    
+      {% for post in year.items %}
+        {% include archive-single.html %}
+      {% endfor %}
+   
+  </section>
+{% endfor %} 

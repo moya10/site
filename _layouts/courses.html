@@ -1,0 +1,44 @@
+---
+layout: single
+---
+{% if page.excerpt %}
+  <p>{{ page.excerpt }}</p>
+{% endif %}
+
+<table>
+  <thead>
+    <tr>
+      <th>Κωδικός</th>
+      <th>Εξάμηνο</th>
+      <th>Τύπος</th>
+      <th>ECTS</th>
+    </tr>
+  </thead>
+  <tbody>
+      <td >{{ page.code }}</td>
+      <td >{{ page.semester }}</td>
+      {% assign category = "" %}
+      {% if page.type == "Compulsory" %} 
+        {% assign category = "Υποχρεωτικό" %}
+      {% elsif page.type == "Optional" %}
+        {% assign category = "Επιλογής" %}
+      {% endif %}
+      <td align="center">{{ category }}</td>   
+      <td >{{ page.ects }}</td>
+  </tbody>
+</table>
+
+{% assign book = page.books %}
+  {% if book != NULL %}
+    <b>Books</b> 
+       {% bibliography %}
+       {{ content }}
+  {% else %}
+    <b>Books</b> 
+    {{ content }}
+    </br>
+  {% endif %}
+
+<a href="{{ page.uri }}" class="btn btn--success">E-class</a>
+</br>
+

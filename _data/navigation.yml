@@ -1,0 +1,9 @@
+main:
+  - title: "Courses"
+    url: /courses/
+  - title: "People"
+    url: /people/
+  - title: "News"
+    url: /news/
+  - title: "Timeline"
+    url: /posts/

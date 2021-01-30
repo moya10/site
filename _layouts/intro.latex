@@ -1,0 +1,62 @@
+\documentclass[12pt]{scrartcl}  
+\usepackage[paperheight=9.0cm,paperwidth=5.7cm,margin=0.5cm]{geometry}
+\usepackage{multicol}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pagecolor}
+\usepackage{afterpage}
+\usepackage{setspace}
+\usepackage{pdfpages}
+\usepackage{pgffor}
+\usepackage{filecontents}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{./_bibliography/references.bib}
+
+\begin{document}
+
+\begin{titlepage}
+
+\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{$titlepage-background$}};
+\newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
+\begin{flushleft}
+\noindent
+\\[-1em]
+\color[HTML]{$if(titlepage-text-color)$$titlepage-text-color$$else$5F5F5F$endif$}
+\makebox[0pt][l]{\colorRule[$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$]{1.3\textwidth}{$if(titlepage-rule-height)$$titlepage-rule-height$$else$4$endif$pt}}
+\par
+\noindent
+
+% The titlepage with a background image has other text spacing and text size
+{
+  \setstretch{2}
+  \vfill
+  \vskip -7em
+  \noindent {\huge \textbf{\textsf{$title$}}}
+  \vskip 2em
+  \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$} \vskip 0.6em \textsf{$date$}}
+  \vfill
+}
+
+\end{flushleft}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+\section{Courses}
+\clearpage
+\includepdf[pages=-]{./_layouts/courses.pdf}
+\section{People}
+\clearpage
+\includepdf[pages=-]{./_layouts/people.pdf}
+\section{References}
+\clearpage
+\begin{flushleft}
+  \cite{978-960-461-232-1}\\
+  \cite{960-512-503-X}
+\end{flushleft}
+\printbibliography[heading=none]
+\end{document}

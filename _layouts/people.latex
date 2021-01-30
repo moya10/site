@@ -1,0 +1,32 @@
+\documentclass[12pt]{scrartcl}  
+\usepackage[paperheight=9.0cm,paperwidth=5.7cm,margin=0.5cm]{geometry}
+
+\usepackage{multicol}
+
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{graphicx}
+
+\graphicspath{{./}}
+
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+
+%\usepackage{fontspec}
+%\setmainfont{VT323}
+% We want to use a custom font installed on our local system, so add that package and select the font
+
+\begin{document}
+  \begin{flushright}
+    \href{$uri$}{$title$}
+  \end{flushright}
+  $if(avatar)$
+  \begin{figure}[H]
+    \centering
+    \includegraphics[height=2cm]{$avatar$}
+  \end{figure}
+  $endif$
+  \scriptsize
+  
+\end{document}

@@ -1,0 +1,29 @@
+<style>
+  .image-gallery {width: 100%; display: grid;  grid-template-columns: repeat(auto-fill,minmax(200px, 1fr)); justify-content: center; padding: 4px;  }
+  .box {flex-basis: 25%; width: 100%; padding: 10px; margin: 2px;  }
+  .img-gallery {width: auto;height: 100px; transform: scale(1);object-fit: fill; transition: all 0.3s ease-in-out; &:hover {transform: scale(1.05);}
+</style>
+<h3 class="archive__subtitle">{{ "Recent Posts" }}</h3>
+
+{% for post in paginator.posts %}
+<div class="grid__item">
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+        <div class="archive__author-avatar" style="text-align: center;">
+        <a href="{{ post.permalink }}" rel="permalink">{{post.title}}</a>
+        <iframe src='{{ post.link | relative_url }}' frameborder="0"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+        <span ><small>Shared via the <a href="{{ post.link | relative_url }}">YouTube</a> on {{ post.date | date: "%D"}}</small></span>
+        <p class="text-justify">
+                {{ post.content }}
+        </p>          
+        </div>
+    </article>
+</div>
+
+{% endfor %}
+
+<div class ="image-gallery">
+    <span><h3 class="archive__subtitle">{{ "Collaborating Institutions" }}</h3></span>
+    {% for partner in site.partners %}
+        <a><div class="box"><img src="{{ partner.logo }} " alt="{{ partner.title }}"  class="img-gallery" /></div></a>   
+    {% endfor %}
+</div>

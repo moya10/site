@@ -1,0 +1,51 @@
+\documentclass[12pt]{scrartcl}  
+\usepackage[paperheight=9.0cm,paperwidth=5.7cm,margin=0.5cm]{geometry}
+
+\usepackage{multicol}
+
+\usepackage{amsthm,amsmath,amssymb}
+
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{_bibliogrphy/references.bib}
+\begin{document}
+  \begin{flushright}
+    {$title$}
+  \end{flushright}
+  $if(image)$
+  \begin{figure}[H]
+    \centering
+    \includegraphics[height=2cm]{$image$}
+  \end{figure}
+  $endif$
+  \scriptsize
+  \begin{center}
+  \begin{tabular}{ l l }
+    $if(code)$ Code:  & {$code$} $endif$ \\
+    $if(semester)$ Semester:  & {$semester$} $endif$ \\
+    $if(type)$ Type:  & {$type$} $endif$ \\
+    $if(ects)$ ECTS:  &  {$ects$} $endif$\\
+  \end{tabular}
+  \\[1cm]
+  $if(books)$
+  \begin{enumerate}
+      Recommended Books
+        $for(books)$
+          \item \cite{$books$}
+        $endfor$
+    \end{enumerate}
+  $endif$
+  \vfill
+  
+  Teaching\\
+    \begin{enumerate*}
+      $if(author)$
+        $for(author)$
+          \item $author$
+        $endfor$
+      $endif$
+    \end{enumerate*}
+  \end{center}
+\end{document}
